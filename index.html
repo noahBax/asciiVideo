@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        :root {
+            --main-offset: 10px;
+        }
+        * {
+            font-family: monospace;
+            color: white;
+            font-size: 2px;
+            line-height: 6px;
+            letter-spacing: 4px;
+            white-space: nowrap;
+        }
+        @media screen and (min-width: 1600px) {
+            * {
+                font-size: calc(4px + var(--main-offset));
+                line-height: calc(7px + var(--main-offset));
+            }
+            body {
+                width: 1920px;
+            }
+        }
+        @media screen and (max-width: 1600px) {
+            * {
+                font-size: calc(2px + var(--main-offset));
+                line-height: calc(6px + var(--main-offset));
+            }
+            body {
+                width: 1600px;
+                /* overflow: hidden; */
+            }
+        }
+        body {
+            background-color: black;
+            /* overflow: hidden; */
+        }
+        img {
+            width: 600px;
+        }
+        mark {
+            background-color: white;
+            color: black;
+        }
+        span {
+            width: 600px;
+        }
+        #beaver, #zerotwo {
+            display: flex;
+            flex-direction: row;
+        align-items: center;
+        }
+        #beaver {
+            display: none;
+        }
+        video {
+            width: 800px;
+        }
+        #controlBox {
+            display: flex;
+            flex-direction: column;
+        }
+        p *, p{
+            font-size: 20px;
+        }
+        #densitySlider, mark {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body onload="loaded()">
+    <div id="beaver">
+        <img src="beaver.jpg" id="image1">
+        <script src="js/index.js"></script>
+    </div>
+    <div id="zerotwo">
+        
+        <div id="controlBox">
+            <p>Zoom out to see the whole thing</p>
+            <p>Play the video below</p>
+            <video id="video1"controls>
+                <source src="zerotwo3.mp4" type="video/mp4">
+            </video>
+            <p><span><mark>Chroma</mark>key Threshold: </span><span id="chroma">576</span></p>
+            <input type="range" max="9000" min="0" id="chromaSlider" value="6923">
+            <p>Brightness Threshold: <span id="brightness">1</span></p>
+            <input type="range" min="0" max="68" id="brightSlider" value="1">
+            <p id="densitySlider"></p>
+            <p>Pixel Size: <span id="pixel"></span></p>
+            <input type="range" id="pixelSlider" min="2" max="5" value="3">
+            <p>Most laptops will only be able to do 3, try 2 though</p>
+
+        </div>
+        <div id="display"></div>
+    </div>
+</body>
+</html>
