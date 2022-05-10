@@ -1,5 +1,5 @@
 var pixelSize = 3;
-const DENSITY = ' .\'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
+const DENSITY_ZERO = ' .\'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
 var chromaThreshold = 6923;
 var brightnessThreshold = 1;
 var currentFrameData;
@@ -8,7 +8,7 @@ function loaded() {
     document.getElementById("chroma").innerHTML = chromaThreshold + '';
     document.getElementById("pixel").innerHTML = pixelSize + '';
     document.getElementById('brightness').innerHTML = brightnessThreshold + "";
-    let densityString = "<mark>" + DENSITY.substring(0, brightnessThreshold) + "</mark>" + DENSITY.substring(brightnessThreshold);
+    let densityString = "<mark>" + DENSITY_ZERO.substring(0, brightnessThreshold) + "</mark>" + DENSITY_ZERO.substring(brightnessThreshold);
     document.getElementById("densitySlider").innerHTML = densityString;
     document.getElementById("chromaSlider").addEventListener('input', (e) => {
         let t = parseInt(e.target.value);
@@ -35,7 +35,7 @@ function loaded() {
         let t = parseInt(e.target.value);
         brightnessThreshold = t;
         document.getElementById('brightness').innerHTML = t + "";
-        let densityString = "<mark>" + DENSITY.substring(0, brightnessThreshold) + "</mark>" + DENSITY.substring(brightnessThreshold);
+        let densityString = "<mark>" + DENSITY_ZERO.substring(0, brightnessThreshold) + "</mark>" + DENSITY_ZERO.substring(brightnessThreshold);
         document.getElementById("densitySlider").innerHTML = densityString;
         if (!playing && started) {
             drawFrame(currentFrameData);
@@ -64,8 +64,8 @@ function loaded() {
                     docString += "&nbsp;";
                 }
                 else {
-                    const INDEX = Math.floor((frameData.indexString[y][x][0] - frameData.lowestBrightness) / range * (DENSITY.length - 1));
-                    docString += (INDEX < brightnessThreshold) ? "&nbsp;" : DENSITY[INDEX];
+                    const INDEX = Math.floor((frameData.indexString[y][x][0] - frameData.lowestBrightness) / range * (DENSITY_ZERO.length - 1));
+                    docString += (INDEX < brightnessThreshold) ? "&nbsp;" : DENSITY_ZERO[INDEX];
                 }
             }
             docString += "<br />";

@@ -82,15 +82,15 @@ function beaver() {
             // GRAYSCALE_CTX.fillStyle = "rgb(" + avg + "," + avg + "," + avg + ")";
             // GRAYSCALE_CTX.fillStyle = "white";
             // ctx2.fillRect(x, y, PIXEL_SIZE, PIXEL_SIZE);
-            const INDEX = Math.floor(avg / maxBrightness * (DENSITY.length - 1))
+            const INDEX = Math.floor(avg / maxBrightness * (DENSITY_ZERO.length - 1))
 
             // GRAYSCALE_CTX.fillText(DENSITY[INDEX], x, y, PIXEL_SIZE)
 
-            if (DENSITY[INDEX] == undefined) {
-                console.log(INDEX, DENSITY[INDEX])
+            if (DENSITY_ZERO[INDEX] == undefined) {
+                console.log(INDEX, DENSITY_ZERO[INDEX])
             }
             
-            docString += (INDEX < 4) ? "\b" : DENSITY[INDEX];
+            docString += (INDEX < 4) ? "\b" : DENSITY_ZERO[INDEX];
         }
         docString += "<br />";
     }

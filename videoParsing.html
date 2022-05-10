@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/asciiVideo.js"></script>
+    <style>
+        canvas {
+            -moz-transform: scale(-1, 1);
+            -webkit-transform: scale(-1, 1);
+            -o-transform: scale(-1, 1);
+            transform: scale(-1, 1);
+            filter: FlipH;
+        }
+        * {
+            font-family: monospace;
+            color: white;
+            font-size: 5px;
+            line-height: 5px;
+            /* letter-spacing: 4px; */
+            white-space: nowrap;
+        }
+        body {
+            background-color: black;
+            /* overflow: hidden; */
+        }
+        input {
+            font-size: initial;
+            color: black;
+        }
+        
+    </style>
+</head>
+<body onload="videoLoaded()">
+    <canvas id="vid"></canvas>
+    <div>
+        <input type="button" value="Take Background Image" id="backgroundButton">
+        <input type="button" value="Reset Background" id="resetButton">
+    </div>
+    <div id="display"></div>
+</body>
+</html>

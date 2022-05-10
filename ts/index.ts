@@ -1,5 +1,5 @@
 var pixelSize = 3;
-const DENSITY = ' .\'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
+const DENSITY_ZERO = ' .\'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$'
 var chromaThreshold = 6923
 var brightnessThreshold = 1;
 var currentFrameData: {maxBrightness: number, lowestBrightness: number, indexString: number[][][]};
@@ -10,7 +10,7 @@ function loaded() {
     document.getElementById("chroma").innerHTML = chromaThreshold + '';
     document.getElementById("pixel").innerHTML = pixelSize + '';
     document.getElementById('brightness').innerHTML = brightnessThreshold + "";
-    let densityString = "<mark>" + DENSITY.substring(0,brightnessThreshold) + "</mark>" + DENSITY.substring(brightnessThreshold);
+    let densityString = "<mark>" + DENSITY_ZERO.substring(0,brightnessThreshold) + "</mark>" + DENSITY_ZERO.substring(brightnessThreshold);
     document.getElementById("densitySlider").innerHTML = densityString;
 
 
@@ -24,7 +24,7 @@ function loaded() {
         }
     });
 
-    const R = document.querySelector(':root');
+    const R: HTMLHtmlElement = document.querySelector(':root');
     const SIZING_REF = [0,0,0,10,24,40]
     // R.style.setProperty('--main-offset', SIZING_REF[brightnessThreshold] + 'px');
 
@@ -43,7 +43,7 @@ function loaded() {
         let t = parseInt((e.target as HTMLInputElement).value);
         brightnessThreshold = t;
         document.getElementById('brightness').innerHTML = t + "";
-        let densityString = "<mark>" + DENSITY.substring(0,brightnessThreshold) + "</mark>" + DENSITY.substring(brightnessThreshold);
+        let densityString = "<mark>" + DENSITY_ZERO.substring(0,brightnessThreshold) + "</mark>" + DENSITY_ZERO.substring(brightnessThreshold);
         document.getElementById("densitySlider").innerHTML = densityString;
         if (!playing && started) {
             drawFrame(currentFrameData);
@@ -78,8 +78,8 @@ function loaded() {
                 if (frameData.indexString[y][x][1] < chromaThreshold) {
                     docString += "&nbsp;";
                 } else {
-                    const INDEX = Math.floor((frameData.indexString[y][x][0] - frameData.lowestBrightness) / range * (DENSITY.length - 1));
-                    docString += (INDEX < brightnessThreshold) ? "&nbsp;" : DENSITY[INDEX];
+                    const INDEX = Math.floor((frameData.indexString[y][x][0] - frameData.lowestBrightness) / range * (DENSITY_ZERO.length - 1));
+                    docString += (INDEX < brightnessThreshold) ? "&nbsp;" : DENSITY_ZERO[INDEX];
                 }
             }
             docString += "<br />";
