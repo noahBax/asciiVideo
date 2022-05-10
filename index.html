@@ -8,17 +8,18 @@
 
     <style>
         :root {
-            --main-offset: 10px;
+            --calc-val: 2px;
+            --main-offset: calc(1080px * calc(var(--calc-val) / 1280));
         }
         * {
             font-family: monospace;
             color: white;
-            font-size: 2px;
+            /* font-size: 2px;
             line-height: 6px;
-            letter-spacing: 4px;
+            letter-spacing: 4px; */
             white-space: nowrap;
         }
-        @media screen and (min-width: 1600px) {
+        /* @media screen and (min-width: 1600px) {
             * {
                 font-size: calc(4px + var(--main-offset));
                 line-height: calc(7px + var(--main-offset));
@@ -34,12 +35,14 @@
             }
             body {
                 width: 1600px;
-                /* overflow: hidden; */
+                /* overflow: hidden;
             }
-        }
+        } */
         body {
             background-color: black;
-            /* overflow: hidden; */
+            overflow: hidden;
+            width: 1080px;
+            height: 1920px;
         }
         img {
             width: 600px;
@@ -53,24 +56,29 @@
         }
         #beaver, #zerotwo {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
         }
         #beaver {
             display: none;
         }
         video {
-            width: 800px;
+            width: 1080px;
         }
         #controlBox {
             display: flex;
             flex-direction: column;
+            width: 1080px;
         }
         p *, p{
             font-size: 20px;
         }
         #densitySlider, mark {
             font-size: 14px;
+        }
+        #display {
+            font-size: var(--main-offset);
+            line-height: var(--main-offset);
         }
     </style>
 </head>
@@ -82,19 +90,19 @@
     <div id="zerotwo">
         
         <div id="controlBox">
-            <p>Zoom out to see the whole thing</p>
-            <p>Play the video below</p>
+            <!-- <p>Zoom out to see the whole thing</p>
+            <p>Play the video below</p> -->
             <video id="video1"controls>
                 <source src="zerotwo3.mp4" type="video/mp4">
             </video>
-            <p><span><mark>Chroma</mark>key Threshold: </span><span id="chroma">576</span></p>
+            <p><span>Chromakey Threshold: </span><span id="chroma">576</span></p>
             <input type="range" max="9000" min="0" id="chromaSlider" value="6923">
             <p>Brightness Threshold: <span id="brightness">1</span></p>
             <input type="range" min="0" max="68" id="brightSlider" value="1">
             <p id="densitySlider"></p>
             <p>Pixel Size: <span id="pixel"></span></p>
-            <input type="range" id="pixelSlider" min="2" max="5" value="3">
-            <p>Most laptops will only be able to do 3, try 2 though</p>
+            <input type="range" id="pixelSlider" min="2" max="5" value="2">
+            <!-- <p>Most laptops will only be able to do 3, try 2 though</p> -->
 
         </div>
         <div id="display"></div>

@@ -1,7 +1,7 @@
-var pixelSize = 3;
+var pixelSize = 2;
 const DENSITY_ZERO = ' .\'`^\",:;Il!i~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$';
 var chromaThreshold = 6923;
-var brightnessThreshold = 1;
+var brightnessThreshold = 24;
 var currentFrameData;
 function loaded() {
     // document.getElementById("image1").addEventListener("load", beaver)
@@ -25,7 +25,7 @@ function loaded() {
         let t = parseInt(e.target.value);
         pixelSize = t;
         document.getElementById("pixel").innerHTML = t + '';
-        R.style.setProperty('--main-offset', SIZING_REF[t] + 'px');
+        R.style.setProperty('--calc-val', t + "");
         if (!playing && started) {
             currentFrameData = createFrameData();
             drawFrame(currentFrameData);
